@@ -1,7 +1,5 @@
 package io.cristianmeneses.ocjp.operators;
 
-import com.sun.security.jgss.GSSUtil;
-
 public class Operators {
 
     public static void main(String[] args) {
@@ -167,6 +165,7 @@ public class Operators {
         int b = a;
         assert a == b;
 
+
         // Both variables "reference" the same object.
         String s1 = "Hello";
         String s2 = s1;
@@ -177,7 +176,7 @@ public class Operators {
         s2 = s2.concat(" world!");
         assert s1 != s2;
 
-        // 
+        //
         StringBuilder sb1 = new StringBuilder("Hello");
         StringBuilder sb2 = sb1;
         assert sb1 == sb2;
