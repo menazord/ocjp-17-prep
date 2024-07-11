@@ -7,4 +7,5 @@
 
 rootProject.name = 'ocjp-17-prep'
 include 'm1-core-java'
+include 'm2-handling-text'
 
