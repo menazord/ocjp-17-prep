@@ -1,4 +1,4 @@
-package io.cristianmeneses.ocjp.operators;
+package io.cristianmeneses.ocjp.lesson1.operators;
 
 public class Operators {
 
