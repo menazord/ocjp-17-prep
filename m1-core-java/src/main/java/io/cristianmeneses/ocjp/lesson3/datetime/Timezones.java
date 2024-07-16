@@ -1,27 +1,31 @@
 package io.cristianmeneses.ocjp.lesson3.datetime;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+@Slf4j
 public class Timezones {
 
     public static void main(String[] args) {
-        System.out.println("Time zone essentials.");
-        getTimeZones();
-        timezoneAccess();
-        timeShifting();
-        System.out.println("All done.");
+        log.info("Lesson 3 - Time zone essentials.");
+        Timezones t = new Timezones();
+        t.getTimeZones();
+        t.timezoneAccess();
+        t.timeShifting();
+        log.info("Lesson 3 - All done.");
 
     }
 
-    private static void getTimeZones() {
-        ZoneId.getAvailableZoneIds().forEach(System.out::println);
+    public void getTimeZones() {
+        ZoneId.getAvailableZoneIds().forEach(log::info);
     }
 
-    private static void timezoneAccess() {
+    public void timezoneAccess() {
         var zi = ZoneId.of("America/Los_Angeles");
-        System.out.println(zi);
+        log.info("{}", zi);
 
         ZoneId.of("Europe/Berlin")
                 .getRules()
@@ -29,21 +33,20 @@ public class Timezones {
                 .forEach(System.out::println);
 
         // When is the next transitions
-        System.out.println(zi.getRules().nextTransition(Instant.now()));
+        log.info("{}", zi.getRules().nextTransition(Instant.now()));
 
         // When was the last transition
-        System.out.println(zi.getRules().previousTransition(Instant.now()));
+        log.info("{}", zi.getRules().previousTransition(Instant.now()));
     }
 
-    private static void timeShifting() {
+    public void timeShifting() {
         var zi = ZoneId.of("America/Los_Angeles");
 
         // Next transition is on 2024-11-03T02:00
         var shiftTime = ZonedDateTime.parse("2024-11-02T00:00:00-07:00[America/Los_Angeles]");
-        System.out.println(shiftTime);
-        System.out.println(shiftTime.plusHours(24));
-        System.out.println(shiftTime.plusHours(48));
-        System.out.println(shiftTime.plusHours(72));
-
+        log.info("{}", shiftTime);
+        log.info("{}", shiftTime.plusHours(24));
+        log.info("{}", shiftTime.plusHours(48));
+        log.info("{}", shiftTime.plusHours(72));
     }
 }

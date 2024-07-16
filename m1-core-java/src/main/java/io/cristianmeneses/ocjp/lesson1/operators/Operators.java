@@ -1,18 +1,23 @@
 package io.cristianmeneses.ocjp.lesson1.operators;
 
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Operators {
 
     public static void main(String[] args) {
 
-        System.out.println("Operations and Core data types.");
-        incrementsAndDecrements();
-        remainder();
-        equalityTest();
-        assignmentValue();
-        casting();
-        wrappers();
-        aliasing();
-        System.out.println("All done.");
+        log.info("Lesson 1 - Operations and Core data types.");
+        Operators o = new Operators();
+        o.incrementsAndDecrements();
+        o.remainder();
+        o.equalityTest();
+        o.assignmentValue();
+        o.casting();
+        o.wrappers();
+        o.aliasing();
+        log.info("Lesson 1 - All done.");
     }
 
     /**
@@ -21,8 +26,8 @@ public class Operators {
      * Post-increments are applied after the value is evaluated.
      * Same rules apply for pre- and post- decrements.
      */
-    private static void incrementsAndDecrements() {
-        System.out.println("Pre/Post increments and decrements.");
+    public void incrementsAndDecrements() {
+        log.info("Pre/Post increments and decrements.");
 
         // Increments
         int pre = 10;
@@ -45,8 +50,8 @@ public class Operators {
      * Not the same as modulus.Java remainder operator takes the sign of the left
      * side operator and ignores the sign of the right side operator.
      */
-    private static void remainder() {
-        System.out.println("Remainder (%) operator.");
+    public void remainder() {
+        log.info("Remainder (%) operator.");
         assert 7 % 3 == 1;
         assert -7 % 3 == -1;
         assert 7 % -3 == 1;
@@ -59,8 +64,8 @@ public class Operators {
      * However, for reference types, the Object.equals() method proves to be more effective
      * if it has been properly overridden.
      */
-    private static void equalityTest() {
-        System.out.println("Equality test.");
+    public void equalityTest() {
+        log.info("Equality test.");
         int a = 10, b = 10;
 
         assert a == b;
@@ -77,8 +82,8 @@ public class Operators {
      * In Java, an assignment operator (=) takes the value of the right side of the assignment.
      * So, for an expression such as x =10, the value of this expression is also 10.
      */
-    private static void assignmentValue() {
-        System.out.println("Assignments value.");
+    public void assignmentValue() {
+        log.info("Assignments value.");
 
         int x = 0;
         assert (x = 10) == 10;
@@ -100,8 +105,8 @@ public class Operators {
      * extend the same classes and implement the same interfaces, then the least common ancestor is a mix of both,
      * although the type can't be used as an assignment.
      */
-    private static void casting() {
-        System.out.println("Casting.");
+    public void casting() {
+        log.info("Casting.");
 
         Animal aDog = new Dog();
         Animal aRacoon = new Raccoon();
@@ -111,16 +116,14 @@ public class Operators {
             Dog dog = (Dog) aDog;
             Raccoon raccoon = (Raccoon) aRacoon;
         } catch (Exception e) {
-            System.out.println("Could not down cast!");
-            e.printStackTrace();
+            log.error("Could not down cast!", e);
         }
 
         // Cross casting
         try {
             Dog dog = (Dog) aRacoon;
         } catch (Exception e) {
-            System.out.println("Could not cross cast!");
-            e.printStackTrace();
+            log.error("Could not cross cast!", e);
         }
 
         // Interface casting
@@ -128,8 +131,7 @@ public class Operators {
             Walk dog = (Dog) aDog;
             Walk raccoon = (Raccoon) aRacoon;
         } catch (Exception e) {
-            System.out.println("Could not interface cast!");
-            e.printStackTrace();
+            log.error("Could not interface cast!", e);
         }
     }
 
@@ -138,8 +140,8 @@ public class Operators {
      * There are wrapper classes for each primitive type in Java.
      * JVM will automatically box/unbox a primitive to/from a wrapper type if required.
      */
-    private static void wrappers() {
-        System.out.println("Wrapper classes, auto-boxing and auto-unboxing.");
+    public void wrappers() {
+        log.info("Wrapper classes, auto-boxing and auto-unboxing.");
 
         int a = 10;
         Integer b = a;
@@ -158,8 +160,8 @@ public class Operators {
      * For reference types, the variable points to a space in memory where the actual value is stored.
      *
      */
-    private static void aliasing() {
-        System.out.println("Aliasing.");
+    public void aliasing() {
+        log.info("Aliasing.");
 
         int a = 10;
         int b = a;
@@ -185,19 +187,19 @@ public class Operators {
         assert sb1 == sb2;
     }
 
-    private static interface Walk {
+    public interface Walk {
 
     }
-    private static class Animal {
+    public class Animal {
         private String name;
 
     }
 
-    private static class Dog extends Animal implements Walk {
+    public class Dog extends Animal implements Walk {
         private String breed;
     }
 
-    private static class Raccoon extends Animal implements Walk {
+    public class Raccoon extends Animal implements Walk {
         private int age;
     }
 }

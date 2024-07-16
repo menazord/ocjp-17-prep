@@ -1,16 +1,20 @@
 package io.cristianmeneses.ocjp.lesson2.text;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class TextHandling {
 
     public static void main(String[] args) {
 
-        System.out.println("Handling text.");
-        pooling();
-        textBlock();
-        System.out.println("All done.");
+        log.info("Lesson 2 - Handling text.");
+        TextHandling t = new TextHandling();
+        t.pooling();
+        t.textBlock();
+        log.info("Lesson 2 - All done.");
     }
 
-    private static void pooling() {
+    public void pooling() {
 
         String s1 = "Hello";
         String s2 = "Hello";
@@ -28,24 +32,24 @@ public class TextHandling {
                 He\
                 llo""";
 
-        System.out.println("s1 == s2? " + (s1 == s2));
-        System.out.println("s1 == s6? " + (s1 == s6));
+        log.info("s1 == s2? " + (s1 == s2));
+        log.info("s1 == s6? " + (s1 == s6));
 
-        System.out.println("s1 == s4? " + (s1 == s4));
+        log.info("s1 == s4? " + (s1 == s4));
 
         s4 = s4.intern();
-        System.out.println("s1 == s4? " + (s1 == s4));
+        log.info("s1 == s4? " + (s1 == s4));
 
-        System.out.println("s1 == s7? " + (s1 == s7));
-        System.out.println("s1 == s8? " + (s1 == s8));
+        log.info("s1 == s7? " + (s1 == s7));
+        log.info("s1 == s8? " + (s1 == s8));
     }
 
-    private static void textBlock() {
+    public void textBlock() {
 
         String js = """
                 let x = 10
                 console.log(`value ${x}`)
                 """;
-        System.out.println(js);
+        log.info(js);
     }
 }
